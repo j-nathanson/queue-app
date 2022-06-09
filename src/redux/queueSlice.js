@@ -41,8 +41,10 @@ export const queueSlice = createSlice({
             } else {
                 state.currentMatch = [newNode];
             }
-
-
+        },
+        returnToCurrentMatch: (state) => {
+            const node = state.winnersLounge.pop();
+            state.currentMatch.push(node);
         }
 
 
@@ -50,6 +52,6 @@ export const queueSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { enqueue, dequeue, winMatch } = queueSlice.actions
+export const { enqueue, dequeue, winMatch, returnToCurrentMatch } = queueSlice.actions
 
 export default queueSlice.reducer
