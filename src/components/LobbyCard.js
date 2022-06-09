@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteTeamLobby, editTeamNameLobby } from '../redux/queueSlice'
+import { useDispatch } from 'react-redux'
+import { deleteTeam, editTeam, } from '../redux/queueSlice'
 
 export default function LobbyCard({ team, index }) {
 
     const [editToggle, setEditToggle] = useState(true);
     const [name, setName] = useState(team.name)
     const dispatch = useDispatch();
+    const lobby = 'waitingLobby';
 
-    const handleDelete = (index) => {
-        dispatch(deleteTeamLobby(index))
+    const handleDelete = () => {
+        dispatch(deleteTeam({ index, lobby }))
     }
 
     const updateToggle = () => {
@@ -18,8 +19,8 @@ export default function LobbyCard({ team, index }) {
     }
 
     const handleEdit = () => {
-        const payload = { index,team, name }
-        dispatch(editTeamNameLobby(payload));
+        const payload = { index, team, name, lobby }
+        dispatch(editTeam(payload));
         updateToggle();
     }
 
@@ -51,7 +52,7 @@ export default function LobbyCard({ team, index }) {
                 </>
             )}
             <Button
-                onClick={() => handleDelete(index)}
+                onClick={handleDelete}
             >
                 delete</Button>
         </div>

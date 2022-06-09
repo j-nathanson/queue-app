@@ -7,9 +7,8 @@ export default function CurrentMatch() {
 
     const dispatch = useDispatch();
     const currentMatch = useSelector((state) => state.queue.currentMatch)
-
+ 
     const handleWin = (team) => {
-
         dispatch(winMatch(team))
     }
 

@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     waitingLobby: [],
@@ -29,13 +29,13 @@ export const queueSlice = createSlice({
             const team = state.waitingLobby.shift();
             state.currentMatch.push(team);
         },
-        editTeamNameLobby: (state, action) => {
-            const { team, index, name } = action.payload;
-            state.waitingLobby[index] = { ...team, name }
+        editTeam: (state, action) => {
+            const { team, index, name, lobby } = action.payload;
+            state[lobby][index] = { ...team, name }
         },
-        deleteTeamLobby: (state, action) => {
-            const index = action.payload;
-            state.waitingLobby.splice(index, 1)
+        deleteTeam: (state, action) => {
+            const { index, lobby } = action.payload;
+            state[lobby].splice(index, 1);
         },
         winMatch: (state, action) => {
             const node = action.payload;
@@ -60,6 +60,6 @@ export const queueSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { enqueue, dequeue, deleteTeamLobby, editTeamNameLobby, winMatch, returnToCurrentMatch } = queueSlice.actions
+export const { enqueue, dequeue, deleteTeam, editTeam, winMatch, returnToCurrentMatch } = queueSlice.actions
 
 export default queueSlice.reducer
