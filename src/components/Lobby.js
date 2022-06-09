@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { dequeue } from '../redux/queueSlice'
+import { deleteTeamLobby, dequeue } from '../redux/queueSlice'
 
 
 
@@ -10,6 +10,10 @@ export default function Lobby() {
 
     const handleClick = () => {
         dispatch(dequeue())
+    }
+
+    const handleDelete = (index) => {
+        dispatch(deleteTeamLobby(index))
     }
 
     const dispatch = useDispatch();
@@ -22,12 +26,15 @@ export default function Lobby() {
                 disabled={currentMatchLength === 2}
 
             >Add to Current match</Button>
-            {lobby.map(team => {
+            {lobby.map((team, index) => {
                 return (
-                    <div>
+                    <div key={index}>
                         <p>{team.name}</p>
                         <Button>edit</Button>
-                        <Button>delete</Button>
+                        <Button
+                            onClick={() => handleDelete(index)}
+                        >
+                            delete</Button>
                     </div>
                 )
             })}
