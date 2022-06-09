@@ -13,18 +13,43 @@ export const queueSlice = createSlice({
         enqueue: (state, action) => {
             const team = action.payload;
             const { currentMatch } = state;
+            const node = {
+                name: team,
+                winStreak: 0
+            }
 
             if (currentMatch.length <= 1) {
-                currentMatch.push(team);
+                currentMatch.push(node);
             } else {
                 const { waitingLobby } = state;
-                waitingLobby.push(team)
+                waitingLobby.push(node)
             }
+        },
+        dequeue: (state) => {
+            const team = state.waitingLobby.shift();
+            state.currentMatch.push(team);
+        },
+        winMatch: (state, action) => {
+            const node = action.payload;
+            let { name, winStreak } = node;
+            winStreak++;
+            const newNode = { name, winStreak }
+
+            if (newNode.winStreak % 2 === 0) {
+                state.winnersLounge.push(newNode);
+                state.currentMatch = [];
+            } else {
+                state.currentMatch = [newNode];
+            }
+
+
         }
+
+
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { enqueue, } = queueSlice.actions
+export const { enqueue, dequeue, winMatch } = queueSlice.actions
 
 export default queueSlice.reducer
