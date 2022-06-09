@@ -7,6 +7,7 @@ import { deleteTeamLobby, dequeue } from '../redux/queueSlice'
 
 export default function Lobby() {
     const currentMatchLength = useSelector((state) => state.queue.currentMatch.length)
+    
 
     const handleClick = () => {
         dispatch(dequeue())
@@ -23,7 +24,7 @@ export default function Lobby() {
             <h2>Waiting Lobby</h2>
             <Button
                 onClick={handleClick}
-                disabled={currentMatchLength === 2}
+                disabled={currentMatchLength === 2 || lobby.length === 0}
 
             >Add to Current match</Button>
             {lobby.map((team, index) => {
