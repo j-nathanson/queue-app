@@ -1,13 +1,15 @@
+import CurrentMatch from "./components/CurrentMatch";
+import Lobby from "./components/Lobby";
 import TeamForm from "./components/TeamForm";
 
 function App() {
   return (
     <div className="App container">
 
-      <h1>Queue App</h1>
+      <h1 className="text-center">Queue App</h1>
       <div className="border">winners lounge</div>
-      <div className="border">current match</div>
-      <div className="border">waiting lobby</div>
+      <CurrentMatch />
+      <Lobby />
       <TeamForm />
 
     </div>
