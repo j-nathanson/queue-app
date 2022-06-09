@@ -1,13 +1,14 @@
+import TeamForm from "./components/TeamForm";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
 
-      <div className="border">title</div>
+      <h1>Queue App</h1>
       <div className="border">winners lounge</div>
       <div className="border">current match</div>
       <div className="border">waiting lobby</div>
-      <div className="border">form</div>
+      <TeamForm />
 
     </div>
   );

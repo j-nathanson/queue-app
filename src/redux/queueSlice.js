@@ -1,20 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    value: 0,
+    waitingLobby: [],
+    currentMatch: [],
+    winnersLounge: []
 }
 
 export const queueSlice = createSlice({
     name: 'queue',
     initialState,
     reducers: {
-        increment: (state) => {
-            state.value += 1
+        enqueue: (state, action) => {
+            const team = action.payload;
+            const { currentMatch } = state;
+
+            if (currentMatch.length <= 1) {
+                currentMatch.push(team);
+            } else {
+                const { waitingLobby } = state;
+                waitingLobby.push(team)
+            }
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, } = queueSlice.actions
+export const { enqueue, } = queueSlice.actions
 
 export default queueSlice.reducer
