@@ -7,9 +7,11 @@ export default function TeamForm() {
     const [team, setTeam] = useState('');
     const dispatch = useDispatch();
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (team) {
             dispatch(enqueue(team))
+            setTeam('');
         }
     }
 
@@ -17,28 +19,31 @@ export default function TeamForm() {
     return (
         <div className='container'>
             <h3>Enter your Team</h3>
-            <div className="row">
-                <Form>
+            <Form>
+                <div className="row">
+
                     <Form.Group>
                         <Form.Control
                             type="text"
+                            value={team}
                             onChange={e => setTeam(e.target.value)}
                             placeholder="Team Rocket"
                         />
                     </Form.Group>
-                </Form>
-            </div>
-            <div className="row justify-content-center">
-                <div className="col-6 ">
-                    <Button
-                        className='w-100'
-                        onClick={handleSubmit}
-                    >
-                        Submit
-                    </Button>
-                </div>
-            </div>
 
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-6 ">
+                        <Button
+                            className='w-100'
+                            type='submit'
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </Button>
+                    </div>
+                </div>
+            </Form>
         </div>
     )
 }
