@@ -2,6 +2,8 @@ import { Button } from 'react-bootstrap'
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteTeam } from '../redux/queueSlice';
+import Icon from '@mdi/react';
+import { mdiTrashCan } from '@mdi/js';
 
 export default function DeleteButton({ index, lobby }) {
 
@@ -13,9 +15,16 @@ export default function DeleteButton({ index, lobby }) {
     return (
         <>
             <Button
+                className='col'
                 onClick={handleDelete}
+                variant='danger'
             >
-                delete</Button>
+                <Icon path={mdiTrashCan}
+                    title="edit team"
+                    size={1}
+                    color="white"
+                />
+            </Button>
         </>
     )
 }

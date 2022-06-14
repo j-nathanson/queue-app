@@ -20,17 +20,24 @@ export default function WinnersLounge() {
 
             {winnersLounge.map((team, index) => {
                 return (
-                    <>
+                    <div className='row'>
                         <ContentEditable key={index} index={index} team={team} lobby={lobby} />
                         <DeleteButton index={index} lobby={lobby} />
-                    </>
+                    </div>
                 )
             })}
-            <Button
-                onClick={handleClick}
-                disabled={currentMatchLength === 2}
+            <div className="row justify-content-center">
+                <div className="col-6 p-0 border">
+                    <Button
+                        onClick={handleClick}
+                        disabled={currentMatchLength === 2}
+                        className='w-100'
+                    >
 
-            >add back to current match</Button>
+                        Return to Match
+                    </Button>
+                </div>
+            </div>
         </div>
     )
 }

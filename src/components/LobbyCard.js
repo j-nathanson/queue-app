@@ -7,7 +7,7 @@ export default function LobbyCard({ team, index }) {
 
 
     return (
-        <div>
+        <div className='row'>
             <ContentEditable index={index} team={team} lobby={lobby} />
             <DeleteButton index={index} lobby={lobby} />
         </div>
