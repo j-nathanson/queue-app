@@ -7,7 +7,7 @@ export default function LobbyCard({ team, index }) {
 
 
     return (
-        <div className='row'>
+        <div className='row mx-auto mb-2'>
             <ContentEditable index={index} team={team} lobby={lobby} />
             <DeleteButton index={index} lobby={lobby} />
         </div>

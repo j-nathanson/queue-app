@@ -15,28 +15,27 @@ export default function WinnersLounge() {
         dispatch(returnToCurrentMatch())
     }
     return (
-        <div className='container border'>
+        <div className='container mb-3 border'>
             <h2>Winner's Lounge</h2>
 
             {winnersLounge.map((team, index) => {
                 return (
-                    <div className='row'>
+                    <div className='row mb-3 mx-auto'>
                         <ContentEditable key={index} index={index} team={team} lobby={lobby} />
                         <DeleteButton index={index} lobby={lobby} />
                     </div>
                 )
             })}
             <div className="row justify-content-center">
-                <div className="col-6 p-0 border">
-                    <Button
-                        onClick={handleClick}
-                        disabled={currentMatchLength === 2}
-                        className='w-100'
-                    >
 
-                        Return to Match
-                    </Button>
-                </div>
+                <Button
+                    onClick={handleClick}
+                    disabled={currentMatchLength === 2}
+                    className="col-5 mb-3"
+                >
+                    Return to Match
+                </Button>
+
             </div>
         </div>
     )

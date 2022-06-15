@@ -18,16 +18,21 @@ export default function CurrentMatch() {
     }
 
     return (
-        <div className='container border'>
+        <div className='container mb-3 border'>
             <h2>Current Match</h2>
+
+            {currentMatch.length === 0 && (
+                <div className='text-center p-5'>add teams</div>
+            )}
+
             {currentMatch.map((team, index) => {
                 return (
-                    <div key={index} className='row'>
+                    <div key={index} className='row mx-auto mb-2'>
                         <ContentEditable index={index} team={team} lobby={lobby} />
                         <Button
                             onClick={() => handleWin(team)}
                             variant='warning'
-                            className='col'
+                            className='col p-0 '
                         >
                             <Icon path={mdiTrophy}
                                 title="edit team"

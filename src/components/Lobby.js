@@ -16,8 +16,8 @@ export default function Lobby() {
     const dispatch = useDispatch();
     const lobby = useSelector((state) => state.queue.waitingLobby);
     return (
-        <div className='container border'>
-            <h2 className='text-center'>Waiting Lobby</h2>
+        <div className='container mb-3 border'>
+            <h2>Waiting Lobby</h2>
             <div className="row justify-content-center mb-3">
                 <div className="col-6">
                     <Button

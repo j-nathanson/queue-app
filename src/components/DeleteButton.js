@@ -15,7 +15,7 @@ export default function DeleteButton({ index, lobby }) {
     return (
         <>
             <Button
-                className='col'
+                className='col-2'
                 onClick={handleDelete}
                 variant='danger'
             >

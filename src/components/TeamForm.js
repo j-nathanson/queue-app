@@ -17,11 +17,10 @@ export default function TeamForm() {
 
 
     return (
-        <div className='container'>
+        <div className='container border'>
             <h3>Enter your Team</h3>
             <Form>
-                <div className="row">
-
+                <div className="row mb-3">
                     <Form.Group>
                         <Form.Control
                             type="text"
@@ -30,7 +29,6 @@ export default function TeamForm() {
                             placeholder="Team Rocket"
                         />
                     </Form.Group>
-
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-6 ">

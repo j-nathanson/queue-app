@@ -24,9 +24,17 @@ export default function ContentEditable({ index, team, lobby }) {
         <>
             {editToggle && (
                 <>
-                    <p className='col-9'>{team.name}</p>
+                    <Form.Group className='col-8 p-0'>
+                        <Form.Control
+                            className='w-100 h-100'
+                            type="text"
+                            value={name}
+                            disabled
+                            onChange={e => setName(e.target.value)}
+                        />
+                    </Form.Group>
                     <Button
-                        className='col'
+                        className='col p-0'
                         onClick={updateToggle}
                         variant='info'
                     >
@@ -41,9 +49,9 @@ export default function ContentEditable({ index, team, lobby }) {
             )}
             {!editToggle && (
                 <>
-                    <Form.Group className='col-9 p-0'>
+                    <Form.Group className='col-8 p-0'>
                         <Form.Control
-                            className='w-100'
+                            className='w-100 h-100'
                             type="text"
                             value={name}
                             onChange={e => setName(e.target.value)}
@@ -52,7 +60,7 @@ export default function ContentEditable({ index, team, lobby }) {
 
                     <Button
                         onClick={handleEdit}
-                        className='col'
+                        className='col p-0'
                         variant='success'
                     >
                         <Icon path={mdiCheckboxMarkedCirclePlusOutline}
