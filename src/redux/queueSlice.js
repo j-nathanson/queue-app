@@ -43,7 +43,7 @@ export const queueSlice = createSlice({
             winStreak++;
             const newNode = { name, winStreak }
 
-            if (newNode.winStreak % 2 === 0) {
+            if (newNode.winStreak >= 2) {
                 state.winnersLounge.push(newNode);
                 state.currentMatch = [];
             } else {

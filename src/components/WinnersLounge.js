@@ -19,7 +19,7 @@ export default function WinnersLounge() {
             <h2>Winner's Lounge</h2>
 
             {winnersLounge.length === 0 && (
-                <div className='text-center p-4'>add a team after 2 consecutive wins</div>
+                <div className='p-4'>add a team after their first 2  wins, and then after every consecutive win.</div>
             )}
             {winnersLounge.map((team, index) => {
                 return (
