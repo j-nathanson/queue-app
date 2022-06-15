@@ -18,6 +18,9 @@ export default function WinnersLounge() {
         <div className='container mb-3 border'>
             <h2>Winner's Lounge</h2>
 
+            {winnersLounge.length === 0 && (
+                <div className='text-center p-4'>add a team after 2 consecutive wins</div>
+            )}
             {winnersLounge.map((team, index) => {
                 return (
                     <div className='row mb-3 mx-auto'>
@@ -27,7 +30,6 @@ export default function WinnersLounge() {
                 )
             })}
             <div className="row justify-content-center">
-
                 <Button
                     onClick={handleClick}
                     disabled={currentMatchLength === 2}
@@ -35,7 +37,6 @@ export default function WinnersLounge() {
                 >
                     Return to Match
                 </Button>
-
             </div>
         </div>
     )

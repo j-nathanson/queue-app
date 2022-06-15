@@ -12,19 +12,20 @@ export default function Lobby() {
         dispatch(dequeue())
     }
 
-
     const dispatch = useDispatch();
     const lobby = useSelector((state) => state.queue.waitingLobby);
     return (
         <div className='container mb-3 border'>
             <h2>Waiting Lobby</h2>
+            {lobby.length === 0 && (
+                <div className='text-center p-5'>add teams</div>
+            )}
             <div className="row justify-content-center mb-3">
                 <div className="col-6">
                     <Button
                         onClick={handleClick}
                         className='w-100'
                         disabled={currentMatchLength === 2 || lobby.length === 0}
-
                     >
                         Add to Match
                     </Button>
